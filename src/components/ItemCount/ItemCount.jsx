@@ -7,6 +7,7 @@ import "./ItemCount.css";
 export default function ItemCount({
 	titulo,
 	descripcion,
+	onAdd,
 	img,
 	cantidad,
 	inicial,
@@ -35,7 +36,6 @@ export default function ItemCount({
 			<Card.Body class='item-card-body'>
 				<Card.Title>{titulo}</Card.Title>
 				<Card.Text>{descripcion}</Card.Text>
-				<Card.Text>Stock {stock}</Card.Text>
 			</Card.Body>
 			<Card.Body className='item-card-footer'>
 				<button
@@ -56,6 +56,16 @@ export default function ItemCount({
 					Agregar
 				</button>
 			</Card.Body>
+			<Card>
+				<button
+					type='button'
+					className='btn btn-outline-primary'
+					onClick={onAdd}
+					disabled={count <= 0}
+				>
+					Agregar al carrito
+				</button>
+			</Card>
 		</Card>
 	);
 }
