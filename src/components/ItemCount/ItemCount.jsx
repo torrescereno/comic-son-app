@@ -4,14 +4,7 @@ import Card from "react-bootstrap/Card";
 // Css
 import "./ItemCount.css";
 
-export default function ItemCount({
-	titulo,
-	descripcion,
-	onAdd,
-	img,
-	cantidad,
-	inicial,
-}) {
+export default function ItemCount({ onAdd, cantidad, inicial }) {
 	const [count, setCount] = useState(parseInt(inicial));
 	const [stock, setstock] = useState(parseInt(cantidad));
 
@@ -31,12 +24,7 @@ export default function ItemCount({
 	};
 
 	return (
-		<Card className='item-card'>
-			<Card.Img className='item-card-img' variant='top' src={img} />
-			<Card.Body class='item-card-body'>
-				<Card.Title>{titulo}</Card.Title>
-				<Card.Text>{descripcion}</Card.Text>
-			</Card.Body>
+		<>
 			<Card.Body className='item-card-footer'>
 				<button
 					type='button'
@@ -66,6 +54,6 @@ export default function ItemCount({
 					Agregar al carrito
 				</button>
 			</Card>
-		</Card>
+		</>
 	);
 }
