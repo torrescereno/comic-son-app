@@ -1,4 +1,4 @@
-# **Comic-son-app **
+# Comic-son-app
 
 Ecommerce especializado en la venta de comics y mangas.
 
