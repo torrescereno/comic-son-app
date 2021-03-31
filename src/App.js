@@ -1,12 +1,13 @@
 import React from 'react';
+import { Body } from "./ecommerce/atoms/Body"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { EcommerceRouter } from './ecommerce/router';
 
-import './app.css'
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <Body>
       <Router>
         <Switch>
           <Route path="/">
@@ -14,7 +15,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </div>
+    </Body>
   );
 }
 

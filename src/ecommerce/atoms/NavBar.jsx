@@ -1,14 +1,19 @@
 import styled from "styled-components";
+import {
+	BACKGROUND_BLACK,
+	BACKGROUND_WHITE,
+	LINK_DARK,
+} from "../style/base/colors";
 
 const NavBar = styled.nav`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	background: #effffa;
+	background: ${BACKGROUND_WHITE};
 	transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
 	height: 100vh;
 	text-align: left;
-	padding: 2rem;
+	padding: 2.5rem;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -24,7 +29,7 @@ const NavBar = styled.nav`
 		padding: 1.4rem 0;
 		font-weight: bold;
 		letter-spacing: 0.5rem;
-		color: #0d0c1d;
+		color: ${BACKGROUND_BLACK};
 		text-decoration: none;
 		transition: color 0.3s linear;
 
@@ -34,7 +39,7 @@ const NavBar = styled.nav`
 		}
 
 		&:hover {
-			color: #343078;
+			color: ${LINK_DARK};
 		}
 	}
 `;
