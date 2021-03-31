@@ -48,7 +48,6 @@ export default function ItemCount({ onAdd, cantidad, inicial }) {
 				<button
 					type='button'
 					className='btn btn-outline-primary'
-					onClick={onAdd}
 					disabled={count <= 0}
 				>
 					Agregar al carrito
