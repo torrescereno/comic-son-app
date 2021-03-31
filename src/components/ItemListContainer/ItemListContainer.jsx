@@ -48,9 +48,16 @@ export default function ItemListContainer({ titulo }) {
 			}, 2000);
 		});
 		be.then((data) => {
-			setProductos(data);
+			if (categoryId === undefined) {
+				setProductos(data);
+			} else {
+				const arrayCategory = data.filter(
+					(data) => data.idCategoria === parseInt(categoryId)
+				);
+				setProductos(arrayCategory);
+			}
 		}).catch((err) => console.log(err));
-	}, []);
+	}, [categoryId]);
 
 	return (
 		<div>

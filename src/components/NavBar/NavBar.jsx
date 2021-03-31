@@ -23,10 +23,14 @@ export default function navBarBoostrap() {
 					<Nav className='mr-auto'>
 						<NavDropdown title='Categorias' id='collasible-nav-dropdown'>
 							<NavDropdown.Item>
-								<Link to='/category/1'>Categoria 1</Link>
+								<Link className='dropdown-item' to='/category/1'>
+									Categoria 1
+								</Link>
 							</NavDropdown.Item>
 							<NavDropdown.Item>
-								<Link to='/category/2'>Categoria 2</Link>
+								<Link className='dropdown-item' to='/category/2'>
+									Categoria 2
+								</Link>
 							</NavDropdown.Item>
 						</NavDropdown>
 					</Nav>

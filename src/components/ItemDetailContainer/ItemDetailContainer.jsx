@@ -3,7 +3,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 
 export default function ItemDetailContainer() {
-	const [item, setItem] = useState();
+	const [item, setItem] = useState([]);
 	const { id } = useParams();
 
 	useEffect(() => {
@@ -44,9 +44,10 @@ export default function ItemDetailContainer() {
 		be.then((data) => {
 			data.map((data) => {
 				if (data.id === parseInt(id)) setItem(data);
+				return data;
 			});
 		}).catch((err) => console.log(err));
-	}, []);
+	}, [id]);
 
 	return (
 		<div>
