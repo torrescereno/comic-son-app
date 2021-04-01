@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Card from "react-bootstrap/Card";
 
 // Css
 import "./ItemCount.css";
@@ -25,7 +24,7 @@ export default function ItemCount({ onAdd, cantidad, inicial }) {
 
 	return (
 		<>
-			<Card.Body className='item-card-footer'>
+			<div className='item-card-footer card-body'>
 				<button
 					type='button'
 					disabled={count <= 0}
@@ -43,8 +42,8 @@ export default function ItemCount({ onAdd, cantidad, inicial }) {
 				>
 					Agregar
 				</button>
-			</Card.Body>
-			<Card>
+			</div>
+			<div className='card-body'>
 				<button
 					type='button'
 					className='btn btn-outline-primary'
@@ -52,7 +51,7 @@ export default function ItemCount({ onAdd, cantidad, inicial }) {
 				>
 					Agregar al carrito
 				</button>
-			</Card>
+			</div>
 		</>
 	);
 }

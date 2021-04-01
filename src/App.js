@@ -17,7 +17,7 @@ function App() {
           <Route exact path="/">
             <ItemListContainer titulo="Items" />
           </Route>
-          <Route  path='/category/:categoryId'>
+          <Route path='/category/:categoryId'>
               <ItemListContainer titulo="Categoria" />
           </Route>
           <Route path="/item/:id" component={ItemDetailcontainer} />

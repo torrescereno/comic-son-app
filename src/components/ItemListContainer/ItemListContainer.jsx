@@ -45,7 +45,7 @@ export default function ItemListContainer({ titulo }) {
 						idCategoria: 2,
 					},
 				]);
-			}, 2000);
+			}, 100);
 		});
 		be.then((data) => {
 			if (categoryId === undefined) {
@@ -61,6 +61,8 @@ export default function ItemListContainer({ titulo }) {
 
 	return (
 		<div>
+			{console.log(productos)}
+
 			<h1>
 				{titulo} {categoryId}
 			</h1>
