@@ -1,11 +1,7 @@
-.done,
-.done:hover {
-	color: black;
+.container-links > a {
+	margin: 10px;
 }
 
-.done {
-	padding: 0.5rem;
-	border: 0.05rem solid black;
-	border-radius: 0.3rem;
-	width: 60%;
+.container-links {
+	display: flex;
 }

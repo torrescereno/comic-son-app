@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./ItemCount.css";
 
-export default function ItemCount({ onAdd, cantidad, inicial }) {
+export default function ItemCount({ cantidad, inicial, onAdd }) {
 	const [count, setCount] = useState(parseInt(inicial));
 	const [stock, setstock] = useState(parseInt(cantidad));
 

@@ -19,7 +19,7 @@ export default function ItemListContainer({ titulo }) {
 		const be = new Promise((res, rej) => {
 			setTimeout(() => {
 				res(comics);
-			}, 2000);
+			}, 100);
 		});
 
 		be.then((data) => {
