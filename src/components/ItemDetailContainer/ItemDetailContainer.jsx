@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 
+// data
+import { comics } from "../../data";
+
 export default function ItemDetailContainer() {
 	const [item, setItem] = useState([]);
 	const [load, setLoad] = useState(true);
@@ -11,40 +14,7 @@ export default function ItemDetailContainer() {
 		setLoad(true);
 		const be = new Promise((res, rej) => {
 			setTimeout(() => {
-				res([
-					{
-						id: 1,
-						titulo: "Producto 1",
-						descripcion: "Descripcion 1",
-						img:
-							"https://www.flaticon.es/svg/vstatic/svg/1524/1524855.svg?token=exp=1617326168~hmac=ac35d9937c204b2648e4769e1029d37a",
-						stock: 10,
-					},
-					{
-						id: 2,
-						titulo: "Producto 2",
-						descripcion: "Descripcion 2",
-						img:
-							"https://www.flaticon.es/svg/vstatic/svg/1524/1524855.svg?token=exp=1617326168~hmac=ac35d9937c204b2648e4769e1029d37a",
-						stock: 9,
-					},
-					{
-						id: 3,
-						titulo: "Producto 3",
-						descripcion: "Descripcion 3",
-						img:
-							"https://www.flaticon.es/svg/vstatic/svg/1524/1524855.svg?token=exp=1617326168~hmac=ac35d9937c204b2648e4769e1029d37a",
-						stock: 7,
-					},
-					{
-						id: 4,
-						titulo: "Producto 4",
-						descripcion: "Descripcion 4",
-						img:
-							"https://www.flaticon.es/svg/vstatic/svg/1524/1524855.svg?token=exp=1617326168~hmac=ac35d9937c204b2648e4769e1029d37a",
-						stock: 10,
-					},
-				]);
+				res(comics);
 			}, 2000);
 		});
 		be.then((data) => {
