@@ -1,7 +1,7 @@
 import React from 'react';
-import { Body } from "./ecommerce/atoms/Body"
+import { Body } from "./components/Body"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { EcommerceRouter } from './ecommerce/router';
+import { EcommerceRouter } from './route/router';
 
 import "./App.css";
 

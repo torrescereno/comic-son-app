@@ -1,5 +1,5 @@
-import { NavBar } from "../atoms/NavBar";
-import { Anchor } from "../atoms/Anchor";
+import { NavBar } from "./NavBar";
+import { Anchor } from "./Anchor";
 
 const Menu = ({ open, setOpen }) => {
 	return (

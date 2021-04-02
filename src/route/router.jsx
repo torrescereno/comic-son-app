@@ -1,13 +1,13 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { HomeView } from "./views/HomeView";
-import { ItemListView } from "./views/ItemListView";
-import { ItemDetailView } from "./views/ItemDetailView";
-import { NavigationView } from "./views/NavegationView";
-import { ContactView } from "./views/ContactView";
-import { LoginView } from "./views/LoginView";
-import { AboutView } from "./views/AboutView";
-import { CartView } from "./views/CartView";
+import { HomeView } from "../views/HomeView";
+import { ItemListView } from "../views/ItemListView";
+import { ItemDetailView } from "../views/ItemDetailView";
+import { NavigationView } from "../views/NavegationView";
+import { ContactView } from "../views/ContactView";
+import { LoginView } from "../views/LoginView";
+import { AboutView } from "../views/AboutView";
+import { CartView } from "../views/CartView";
 
 const EcommerceRouter = () => {
 	return (
