@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-// Css
 import "./ItemCount.css";
 
 export default function ItemCount({ onAdd, cantidad, inicial }) {
@@ -20,6 +19,10 @@ export default function ItemCount({ onAdd, cantidad, inicial }) {
 	const quitaProducto = () => {
 		setCount(count - 1);
 		setstock(stock + 1);
+	};
+
+	const agregar = () => {
+		onAdd(count);
 	};
 
 	return (
@@ -48,6 +51,7 @@ export default function ItemCount({ onAdd, cantidad, inicial }) {
 					type='button'
 					className='btn btn-outline-primary'
 					disabled={count <= 0}
+					onClick={agregar}
 				>
 					Agregar al carrito
 				</button>

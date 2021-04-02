@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import ItemCount from "../ItemCount/ItemCount";
 
 import "./Item.css";
 
@@ -14,16 +13,12 @@ export default function Item({ producto }) {
 			/>
 			<div className='item-card-body card-body'>
 				<h5 className='card-title'>
-					<Link to={`/item/${producto.id}`}>{producto.titulo}</Link>
+					<Link className='item-link' to={`/item/${producto.id}`}>
+						{producto.titulo}
+					</Link>
 				</h5>
 				<p className='card-text'>{producto.descripcion}</p>
 			</div>
-
-			{producto.stock > 0 ? (
-				<ItemCount cantidad={producto.stock} inicial='0' onAdd='' />
-			) : (
-				<p>No hay productos</p>
-			)}
 		</div>
 	);
 }

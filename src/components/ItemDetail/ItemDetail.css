@@ -1,0 +1,11 @@
+.done,
+.done:hover {
+	color: black;
+}
+
+.done {
+	padding: 0.5rem;
+	border: 0.05rem solid black;
+	border-radius: 0.3rem;
+	width: 60%;
+}

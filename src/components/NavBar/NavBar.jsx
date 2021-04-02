@@ -14,7 +14,9 @@ export default function navBarBoostrap() {
 	return (
 		<Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
 			<Navbar.Brand className='nav-brand'>
-				<Link to='/'>Comic-Son</Link>
+				<Link className='link' to='/'>
+					Comic-Son
+				</Link>
 			</Navbar.Brand>
 
 			<Nav>
