@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 // data
 import { comics } from "../../data";
@@ -8,10 +10,17 @@ import { comics } from "../../data";
 // css
 import "./ItemListContainer.css";
 
+const useStyles = makeStyles({
+	root: {
+		marginTop: "15rem",
+	},
+});
+
 export default function ItemListContainer({ titulo }) {
 	const [productos, setProductos] = useState([]);
 	const [load, setLoad] = useState(true);
 	const { categoryId } = useParams();
+	const classes = useStyles();
 
 	useEffect(() => {
 		setLoad(true);
@@ -19,7 +28,7 @@ export default function ItemListContainer({ titulo }) {
 		const be = new Promise((res, rej) => {
 			setTimeout(() => {
 				res(comics);
-			}, 100);
+			}, 2000);
 		});
 
 		be.then((data) => {
@@ -37,16 +46,20 @@ export default function ItemListContainer({ titulo }) {
 
 	return (
 		<div>
-			<h1>
-				{titulo} {categoryId}
-			</h1>
-
 			{load ? (
-				<p>Cargado...</p>
-			) : (
-				<div className='item-container'>
-					<ItemList productos={productos} />
+				<div className={classes.root}>
+					<CircularProgress />
 				</div>
+			) : (
+				<>
+					<h1 className='mt-5'>
+						{titulo} {categoryId}
+					</h1>
+
+					<div className='item-container'>
+						<ItemList productos={productos} />
+					</div>
+				</>
 			)}
 		</div>
 	);

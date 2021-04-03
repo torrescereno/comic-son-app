@@ -7,9 +7,23 @@ const Cart = () => {
 
 	return (
 		<div>
-			<h3>Carrito</h3>
+			<h3 className='mt-5'>Carrito</h3>
 
 			<div className='container mt-5'>
+				{cartItem.length > 0 && (
+					<div className='row w-100 d-flex justify-content-end mb-3'>
+						<div className='col-auto'>
+							<button
+								onClick={() => {
+									clear();
+								}}
+								className='btn btn-danger'
+							>
+								Limpiar
+							</button>
+						</div>
+					</div>
+				)}
 				<div className='row'>
 					<table className='table table-light'>
 						<thead>
@@ -40,21 +54,6 @@ const Cart = () => {
 						</tbody>
 					</table>
 				</div>
-
-				{cartItem.length > 0 && (
-					<div className='row w-100 d-flex justify-content-end'>
-						<div className='col-auto'>
-							<button
-								onClick={() => {
-									clear();
-								}}
-								className='btn btn-danger'
-							>
-								Limpiar carrito
-							</button>
-						</div>
-					</div>
-				)}
 			</div>
 		</div>
 	);

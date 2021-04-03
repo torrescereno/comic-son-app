@@ -1,4 +1,5 @@
-import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 /* Componets */
 import NavBar from "./components/NavBar/NavBar";
@@ -6,9 +7,10 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ItemDetailcontainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { Cart } from "./components/Cart/Cart";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+/* Provider */
 import { CartProvider } from "./context/CartProvider";
 
+import "./App.css";
 // Conetexto
 
 function App() {
@@ -19,7 +21,7 @@ function App() {
 					<NavBar />
 					<Switch>
 						<Route exact path='/'>
-							<ItemListContainer titulo='Items' />
+							<ItemListContainer titulo='Comics' />
 						</Route>
 						<Route path='/category/:categoryId'>
 							<ItemListContainer titulo='Categoria' />
