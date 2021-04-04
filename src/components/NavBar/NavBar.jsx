@@ -1,44 +1,61 @@
-import React from "react";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
-// Css
-import "./NavBar.css";
-
-// Import components
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import Home from "@material-ui/icons/Home";
 import CartWidget from "../CartWidget/CartWidget";
+import { CartContext } from "../../context/CartContext";
 
-export default function navBarBoostrap() {
+const useStyles = makeStyles(() => ({
+	navContainer: {
+		display: `flex`,
+		justifyContent: `space-between`,
+	},
+
+	linkNav: {
+		color: "white",
+	},
+}));
+
+const NavBar = () => {
+	const classes = useStyles();
+	const { cartItem } = useContext(CartContext);
+
 	return (
-		<Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
-			<Navbar.Brand className='nav-brand'>
-				<Link className='link' to='/'>
-					Comic-Son
-				</Link>
-			</Navbar.Brand>
+		<div>
+			<AppBar position='static'>
+				<Toolbar className={classes.navContainer}>
+					<div>
+						<IconButton edge='start' color='inherit' aria-label='home'>
+							<Link to='/'>
+								<Home />
+							</Link>
+						</IconButton>
 
-			<Nav>
-				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
-				<Navbar.Collapse id='responsive-navbar-nav'>
-					<Nav className='mr-auto'>
-						<NavDropdown title='Categorias' id='collasible-nav-dropdown'>
-							<NavDropdown.Item>
-								<Link className='dropdown-item' to='/category/1'>
-									Categoria 1
-								</Link>
-							</NavDropdown.Item>
-							<NavDropdown.Item>
-								<Link className='dropdown-item' to='/category/2'>
-									Categoria 2
-								</Link>
-							</NavDropdown.Item>
-						</NavDropdown>
-					</Nav>
-				</Navbar.Collapse>
-			</Nav>
-			<CartWidget />
-		</Navbar>
+						<Button>
+							<Link to='/category/1' className={classes.linkNav}>
+								DC
+							</Link>
+						</Button>
+						<Button>
+							<Link to='/category/2' className={classes.linkNav}>
+								Marvel
+							</Link>
+						</Button>
+					</div>
+
+					{cartItem.length > 0 && (
+						<Button>
+							<CartWidget />
+						</Button>
+					)}
+				</Toolbar>
+			</AppBar>
+		</div>
 	);
-}
+};
+
+export { NavBar };
