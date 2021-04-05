@@ -3,9 +3,7 @@ import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
-// data
-import { comics } from "../../data";
+import { getFirestore } from "../../firebase/firebase";
 
 // css
 import "./ItemListContainer.css";
@@ -25,19 +23,25 @@ export default function ItemListContainer({ titulo }) {
 	useEffect(() => {
 		setLoad(true);
 
-		const be = new Promise((res, rej) => {
-			setTimeout(() => {
-				res(comics);
-			}, 2000);
-		});
+		const db = getFirestore();
+		let itemCollection;
 
-		be.then((data) => {
-			categoryId !== undefined
-				? setProductos(
-						data.filter((data) => data.idCategoria === parseInt(categoryId))
-				  )
-				: setProductos(data);
-		})
+		if (categoryId !== undefined) {
+			itemCollection = db
+				.collection("items")
+				.where("idCategoria", "==", categoryId);
+		} else {
+			itemCollection = db.collection("items");
+		}
+
+		itemCollection
+			.get()
+			.then((querySnapshot) => {
+				setProductos(
+					querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+				);
+			})
+
 			.catch((err) => console.log(err))
 			.finally(() => {
 				setLoad(false);

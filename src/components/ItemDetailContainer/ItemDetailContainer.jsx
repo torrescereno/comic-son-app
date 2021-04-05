@@ -3,9 +3,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
-// data
-import { comics } from "../../data";
+import { getFirestore } from "../../firebase/firebase";
 
 const useStyles = makeStyles({
 	root: {
@@ -21,17 +19,16 @@ export default function ItemDetailContainer() {
 
 	useEffect(() => {
 		setLoad(true);
-		const be = new Promise((res, rej) => {
-			setTimeout(() => {
-				res(comics);
-			}, 2000);
-		});
-		be.then((data) => {
-			data.map((data) => {
-				if (data.id === parseInt(id)) setItem(data);
-				return data;
-			});
-		})
+		const db = getFirestore();
+
+		const itemCollection = db.collection("items");
+		const item = itemCollection.doc(`${id}`);
+
+		item
+			.get()
+			.then((doc) => {
+				setItem({ ...doc.data(), id: doc.id });
+			})
 			.catch((err) => console.log(err))
 			.finally(() => {
 				setLoad(false);
