@@ -1,5 +1,5 @@
-import { NavBar } from "./NavBar";
-import { Anchor } from "./Anchor";
+import { NavBar } from "../atoms/NavBar";
+import { Anchor } from "../atoms/Anchor";
 
 const Menu = ({ open, setOpen }) => {
 	return (
@@ -9,7 +9,6 @@ const Menu = ({ open, setOpen }) => {
 			<Anchor to='/nosotros'>Nosotros</Anchor>
 			<Anchor to='/contacto'>Contacto</Anchor>
 			<Anchor to='/carrito'>Carrito</Anchor>
-			<Anchor to='/login'>Login</Anchor>
 		</NavBar>
 	);
 };

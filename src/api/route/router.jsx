@@ -5,21 +5,24 @@ import { ItemListView } from "../views/ItemListView";
 import { ItemDetailView } from "../views/ItemDetailView";
 import { NavigationView } from "../views/NavegationView";
 import { ContactView } from "../views/ContactView";
-import { LoginView } from "../views/LoginView";
 import { AboutView } from "../views/AboutView";
 import { CartView } from "../views/CartView";
+import { Footer } from "../atoms/Footer";
+import { Wrapper } from "../atoms/Wrapper";
 
 const EcommerceRouter = () => {
 	return (
 		<React.Fragment>
 			<NavigationView />
-			<Route exact path='/' component={HomeView} />
-			<Route exact path='/comics' component={ItemListView} />
-			<Route path='/comics/:id' component={ItemDetailView} />
-			<Route path='/nosotros' component={AboutView} />
-			<Route path='/contacto' component={ContactView} />
-			<Route path='/login' component={LoginView} />
-			<Route path='/carrito' component={CartView} />
+			<Wrapper>
+				<Route exact path='/' component={HomeView} />
+				<Route exact path='/comics' component={ItemListView} />
+				<Route path='/comics/:id' component={ItemDetailView} />
+				<Route path='/nosotros' component={AboutView} />
+				<Route path='/contacto' component={ContactView} />
+				<Route path='/carrito' component={CartView} />
+			</Wrapper>
+			<Footer />
 		</React.Fragment>
 	);
 };
