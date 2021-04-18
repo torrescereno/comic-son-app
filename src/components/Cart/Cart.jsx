@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { eliminar } from "../../data";
 
+// Aca solo contendra la información de los prodictos que se escogieron
+
 const Cart = () => {
 	const { cartItem, removeItem, clear } = useContext(CartContext);
 	const [total, setTotal] = useState(0);
@@ -34,13 +36,8 @@ const Cart = () => {
 					<div className='container mt-5'>
 						<div className='row w-100 d-flex justify-content-end  mb-3'>
 							<div className='col-auto'>
-								<button
-									onClick={() => {
-										clear();
-									}}
-									className='btn btn-dark mr-3'
-								>
-									Finalizar compra
+								<button className='btn btn-dark mr-3'>
+									<Link to='/order'>Finalizar compra</Link>
 								</button>
 								<button
 									onClick={() => {

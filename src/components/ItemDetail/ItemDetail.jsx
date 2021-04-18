@@ -34,7 +34,7 @@ export default function ItemDetail({ item }) {
 			) : (
 				<div className='container-links'>
 					<Link to='/cart' className='btn btn-dark'>
-						Terminar compra
+						Ir al carrito
 					</Link>
 
 					<Link to='/' className='btn btn-primary'>

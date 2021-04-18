@@ -6,6 +6,7 @@ import { NavBar } from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailcontainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { Cart } from "./components/Cart/Cart";
+import { FormContainer } from "./components/FormContainer/FromContainer";
 
 /* Provider */
 import { CartProvider } from "./context/CartProvider";
@@ -25,6 +26,9 @@ function App() {
 						</Route>
 						<Route path='/category/:categoryId'>
 							<ItemListContainer titulo='Categoria' />
+						</Route>
+						<Route path='/order'>
+							<FormContainer />
 						</Route>
 						<Route path='/item/:id' component={ItemDetailcontainer} />
 						<Route path='/cart' component={Cart} />
