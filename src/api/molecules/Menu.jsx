@@ -1,6 +1,8 @@
 import { NavBar } from "../atoms/NavBar";
 import { Anchor } from "../atoms/Anchor";
 
+// Agrergar la cantidad de productos seleccionnados entre parentesis ()
+
 const Menu = ({ open, setOpen }) => {
 	return (
 		<NavBar open={open} onClick={() => setOpen(!open)}>
@@ -8,7 +10,7 @@ const Menu = ({ open, setOpen }) => {
 			<Anchor to='/comics'>Comics</Anchor>
 			<Anchor to='/nosotros'>Nosotros</Anchor>
 			<Anchor to='/contacto'>Contacto</Anchor>
-			<Anchor to='/carrito'>Carrito</Anchor>
+			<Anchor to='/carrito'>Carrito (2)</Anchor>
 		</NavBar>
 	);
 };

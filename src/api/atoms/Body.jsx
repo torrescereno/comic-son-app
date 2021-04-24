@@ -8,7 +8,9 @@ const Body = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 	min-height: 100vh;
+	width: 100%;
 	background: ${BACKGROUND_BLACK};
 	color: ${BACKGROUND_WHITE};
 	text-rendering: optimizeLegibility;

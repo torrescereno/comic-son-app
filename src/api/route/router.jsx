@@ -7,7 +7,6 @@ import { NavigationView } from "../views/NavegationView";
 import { ContactView } from "../views/ContactView";
 import { AboutView } from "../views/AboutView";
 import { CartView } from "../views/CartView";
-import { Footer } from "../atoms/Footer";
 import { Wrapper } from "../atoms/Wrapper";
 
 const EcommerceRouter = () => {
@@ -22,7 +21,6 @@ const EcommerceRouter = () => {
 				<Route path='/contacto' component={ContactView} />
 				<Route path='/carrito' component={CartView} />
 			</Wrapper>
-			<Footer />
 		</React.Fragment>
 	);
 };
