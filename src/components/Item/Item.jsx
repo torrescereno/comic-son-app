@@ -14,7 +14,7 @@ export default function Item({ producto }) {
 				/>
 				<div className='item-card-body card-body'>
 					<h5 className='card-title'>{producto.titulo}</h5>
-					<p className='card-text'>{producto.descripcion}</p>
+					<p className='card-text'>$ {producto.precio}</p>
 				</div>
 			</Link>
 		</div>

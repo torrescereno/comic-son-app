@@ -7,6 +7,9 @@ import { getFirestore } from "../../firebase/firebase";
 
 const useStyles = makeStyles({
 	root: {
+		minHeight: "100vh",
+	},
+	circle: {
 		marginTop: "15rem",
 	},
 });
@@ -36,9 +39,9 @@ export default function ItemDetailContainer() {
 	}, [id]);
 
 	return (
-		<div>
+		<div className={classes.root}>
 			{load ? (
-				<div className={classes.root}>
+				<div className={classes.circle}>
 					<CircularProgress />
 				</div>
 			) : (

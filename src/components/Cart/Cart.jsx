@@ -2,12 +2,18 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { eliminar } from "../../data";
+import { makeStyles } from "@material-ui/core/styles";
 
-// Aca solo contendra la información de los prodictos que se escogieron
+const useStyles = makeStyles({
+	root: {
+		paddingTop: "2rem",
+	},
+});
 
 const Cart = () => {
 	const { cartItem, removeItem, clear } = useContext(CartContext);
 	const [total, setTotal] = useState(0);
+	const classes = useStyles();
 
 	useEffect(() => {
 		const sub = cartItem.reduce(
@@ -19,7 +25,7 @@ const Cart = () => {
 	}, [cartItem]);
 
 	return (
-		<div>
+		<div className={classes.root}>
 			{cartItem.length === 0 && (
 				<div>
 					<h3 className='mt-5'>Carrito vacío</h3>

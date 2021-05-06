@@ -13,10 +13,17 @@ const useStyles = makeStyles(() => ({
 	navContainer: {
 		display: `flex`,
 		justifyContent: `space-between`,
+		background: "black",
 	},
 
 	linkNav: {
 		color: "white",
+	},
+	root: {
+		position: "absolute",
+		width: "100%",
+		zIndex: "1",
+		top: "0",
 	},
 }));
 
@@ -25,7 +32,7 @@ const NavBar = () => {
 	const { cartItem } = useContext(CartContext);
 
 	return (
-		<div>
+		<div className={classes.root}>
 			<AppBar position='static'>
 				<Toolbar className={classes.navContainer}>
 					<div>

@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
-// Data
 import { img } from "../../data";
 
 import "./CartWidget.css";

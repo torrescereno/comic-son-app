@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { CartContext } from "../../context/CartContext";
 import { getFirestore } from "../../firebase/firebase";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import { Link } from "react-router-dom";
@@ -45,6 +46,8 @@ const FormContainer = () => {
 	} = useForm();
 	const classes = useStyles();
 	const [orderId, setOrderId] = useState(null);
+	const [load, setLoad] = useState(false);
+
 	const onSubmit = async (buyer) => {
 		const db = getFirestore();
 		const orders = db.collection("orders");
@@ -63,14 +66,11 @@ const FormContainer = () => {
 		};
 
 		try {
+			setLoad(true);
 			const { id } = await orders.add(newOrder);
 			setOrderId(id);
 
-			console.log("id", id);
-			console.log("newOrder", newOrder);
-
 			// Actualizar stock
-
 			const itemsToUpdate = db.collection("items").where(
 				firebase.firestore.FieldPath.documentId(),
 				"in",
@@ -97,6 +97,7 @@ const FormContainer = () => {
 
 			// Vaciar carrito
 			clear();
+			setLoad(false);
 		} catch (error) {
 			console.log(error);
 		}
@@ -104,58 +105,66 @@ const FormContainer = () => {
 
 	if (orderId && cartItem.length === 0) {
 		return (
-			<div>
+			<Container>
 				<h1>Gracias por su compra</h1>
 				<p>Numero de orden {orderId}</p>
-			</div>
+			</Container>
 		);
 	}
 
 	if (cartItem.length === 0) {
 		return (
-			<div>
+			<Container>
 				<h3 className='mt-5'>Carrito vacío</h3>
 				<Link className='btn btn-dark' to='/'>
 					Volver al menu
 				</Link>
-			</div>
+			</Container>
 		);
 	}
 
 	return (
 		<Container>
-			<h1>Formulario de compra</h1>
-			<Form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
-				<TextField
-					{...register("name", { required: "Campo obligatorio" })}
-					id='name'
-					label='Nombre'
-					type='text'
-				/>
-				{errors.name && errors.name.message}
+			{load ? (
+				<div className={classes.circle}>
+					<CircularProgress />
+				</div>
+			) : (
+				<>
+					<h1>Formulario de compra</h1>
+					<Form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
+						<TextField
+							{...register("name", { required: "Campo obligatorio" })}
+							id='name'
+							label='Nombre'
+							type='text'
+						/>
+						{errors.name && errors.name.message}
 
-				<TextField
-					{...register("phone", {
-						required: "Campo obligatorio",
-						minLength: { value: 9, message: "Debe contener 9 digitos" },
-						maxLength: { value: 9, message: "Debe contener 9 digitos" },
-					})}
-					id='phone'
-					label='Telefono'
-					type='number'
-				/>
-				{errors.phone && errors.phone.message}
-				<TextField
-					{...register("email", { required: "Campo obligatorio" })}
-					id='email'
-					label='Correo'
-					type='email'
-				/>
-				{errors.email && errors.email.message}
-				<Button type='submit' variant='contained'>
-					Comprar
-				</Button>
-			</Form>
+						<TextField
+							{...register("phone", {
+								required: "Campo obligatorio",
+								minLength: { value: 9, message: "Debe contener 9 digitos" },
+								maxLength: { value: 9, message: "Debe contener 9 digitos" },
+							})}
+							id='phone'
+							label='Telefono'
+							type='number'
+						/>
+						{errors.phone && errors.phone.message}
+						<TextField
+							{...register("email", { required: "Campo obligatorio" })}
+							id='email'
+							label='Correo'
+							type='email'
+						/>
+						{errors.email && errors.email.message}
+						<Button type='submit' variant='contained'>
+							Comprar
+						</Button>
+					</Form>
+				</>
+			)}
 		</Container>
 	);
 };

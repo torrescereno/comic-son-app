@@ -22,10 +22,10 @@ function App() {
 					<NavBar />
 					<Switch>
 						<Route exact path='/'>
-							<ItemListContainer titulo='Comics' />
+							<ItemListContainer />
 						</Route>
 						<Route path='/category/:categoryId'>
-							<ItemListContainer titulo='Categoria' />
+							<ItemListContainer />
 						</Route>
 						<Route path='/order'>
 							<FormContainer />
